@@ -64,11 +64,33 @@ fun TestAddToDoList() {
     AddToDoList("MAKAN")
 }
 
-fun EditToDoList() {
+fun RemoveToDoList(inputNumber: Int): Boolean {
+    val Angka = inputNumber - 1
+    if (Angka <= -1 && Angka > activity.size){
+        return false
+    }else if(activity[Angka] == null){
+        return false
+    } else{
+        for (i in activity.indices){
+            if (i == activity.size - 1){
+                activity[i] = null
 
+            }
+            else activity[i] = activity[i + 1]
+        }
+    }
+    return true
 }
 
-fun RemoveToDoList() {
+fun TestRemoveToDoList(){
+    AddToDoList("Makan")
+    AddToDoList("Main")
+    AddToDoList("Belajar")
+    AddToDoList("Coding")
+    RemoveToDoList(1)
+    ShowToDoList()
+}
+fun EditToDoList() {
 
 }
 
@@ -85,6 +107,7 @@ fun UIRemoveToDoList() {
 }
 fun main() {
     // MAIN PROGRAM
-    TestShowToDoList()
+    // TestShowToDoList()
     // TestAddToDoList()
+    TestRemoveToDoList()
 }
